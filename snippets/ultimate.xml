@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="ultimate"
+           fetch="https://github.com/UltimateOS"
+           sync-c="true"
+           sync-j="4"
+           revision="refs/heads/14" />
+
+  <remote  name="ultimate-gitea"
+           fetch="https://gitea.com/UltimateOS"
+           sync-c="true"
+           sync-j="4"
+           revision="refs/heads/14" />
+
+  <!-- art -->
+  <project path="art" name="art" remote="ultimate" />
+
+  <!-- bionic -->
+  <project path="bionic" name="bionic" groups="pdk" remote="ultimate" />
+
+  <!-- bootable recovery -->
+  <project path="bootable/recovery" name="bootable_recovery" groups="pdk" remote="ultimate" />
+
+  <!-- build -->
+  <project path="build/make" name="build_make" groups="pdk" remote="ultimate">
+    <linkfile dest="build/CleanSpec.mk" src="CleanSpec.mk" />
+    <linkfile dest="build/buildspec.mk.default" src="buildspec.mk.default" />
+    <linkfile dest="build/core" src="core" />
+    <linkfile dest="build/envsetup.sh" src="envsetup.sh" />
+    <linkfile dest="build/target" src="target" />
+    <linkfile dest="build/tools" src="tools" />
+  </project>
+  <project path="build/soong" name="build_soong" groups="pdk,tradefed" remote="ultimate">
+    <linkfile dest="Android.bp" src="root.bp" />
+    <linkfile dest="bootstrap.bash" src="bootstrap.bash" />
+  </project>
+
+  <!-- device -->
+  <project path="device/ultimate/sepolicy" name="device_ultimate_sepolicy" remote="ultimate" />
+
+  <!-- external -->
+  <project path="external/jemalloc_new" name="external_jemalloc_new" groups="pdk" remote="ultimate" />
+  <project path="external/piex" name="external_piex" groups="pdk" remote="ultimate" />
+
+  <!-- frameworks -->
+  <project path="frameworks/av" name="frameworks_av" remote="ultimate" />
+  <project path="frameworks/base" name="frameworks_base" remote="ultimate" />
+  <project path="frameworks/native" name="frameworks_native" remote="ultimate" />
+
+  <!-- hardware -->
+  <project path="hardware/ultimate/interfaces" name="hardware_ultimate_interfaces" remote="ultimate" />
+  <project path="hardware/qcom-caf/common" name="hardware_qcom-caf_common" remote="ultimate" >
+    <!-- Add guard for AOSP hardware/qcom dir -->
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <!-- Add guards for CLO repositories -->
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8953/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8996/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8996/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8998/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8998/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm660/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm845/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm845/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8150/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8350/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="kernel/google/gs101/private/google-modules/Android.bp" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8450/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8450/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8550/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8550/Android.mk" />
+    <!-- add guards for Pixel kernel modules -->
+    <linkfile src="os_pickup.bp" dest="kernel/google/gs201/private/google-modules/Android.bp" />
+  </project>
+
+  <!-- manifest -->
+  <project path="manifest" name="manifest" remote="ultimate" />
+
+  <!-- packages -->
+  <project path="packages/apps/BtHelper" name="packages_apps_BtHelper" remote="ultimate" />
+  <project path="packages/apps/FaceUnlock" name="packages_apps_FaceUnlock" remote="ultimate" />
+  <project path="packages/apps/GameSpace" name="packages_apps_GameSpace" remote="ultimate" />
+  <project path="packages/apps/Launcher3" name="packages_apps_Launcher3" remote="ultimate" />
+  <project path="packages/apps/Nfc" name="packages_apps_Nfc" remote="ultimate" />
+  <project path="packages/apps/Settings" name="packages_apps_Settings" remote="ultimate" />
+  <project path="packages/apps/ThemePicker" name="packages_apps_ThemePicker" remote="ultimate" />
+  <project path="packages/modules/Connectivity" name="packages_modules_Connectivity" remote="ultimate" />
+  <project path="packages/overlays/Ultimate" name="packages_overlays_Ultimate" remote="ultimate" />
+  <project path="packages/providers/DownloadProvider" name="packages_providers_DownloadProvider" remote="ultimate" />
+  <project path="packages/services/OmniJaws" name="packages_services_OmniJaws" remote="ultimate" />
+  <project path="packages/services/Telecomm" name="packages_services_Telecomm" remote="ultimate" />
+
+  <!-- system -->
+  <project path="system/core" name="system_core" remote="ultimate" />
+  <project path="system/sepolicy" name="system_sepolicy" remote="ultimate" />
+  <project path="system/update_engine" name="system_update_engine" remote="ultimate" />
+
+  <!-- vendor -->
+  <project path="vendor/ultimate" name="vendor_ultimate" remote="ultimate" />
+  <project path="vendor/gms" name="vendor_gms" remote="ultimate-gitea" clone-depth="1" />
+  <project path="vendor/support" name="vendor_support" remote="ultimate" />
+
+</manifest>
